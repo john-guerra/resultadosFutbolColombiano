@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Tabla de Posiciones Torneo Apertura 2017 Colombia</title>
+	<link href="https://fonts.googleapis.com/css?family=Droid+Sans|Fjalla+One" rel="stylesheet">
+	<style>
+		body {
+
+			font-family: 'Droid Sans', sans-serif;
+			margin:20px;
+		}
+		h1, .legend {
+			font-family: 'Fjalla One', sans-serif;
+
+		}
+		.legend {
+			font-size: 14pt;
+		}
+		.axis {
+			font-size: 10pt;
+		}
+		p, svg {
+			font-family: 'Droid Sans', sans-serif;
+		}
+
+		.classified-range {
+			pointer-events: none;
+		}
+		.classified-range .legend {
+	    fill: #cacaca;
+    	font-weight: bold;
+    	font-family: 'Fjalla One', sans-serif;
+    	font-size: 16pt;
+		}
+		.domain {
+			fill:  none;
+		}
+
+		input[type=checkbox] {
+		  zoom:1.3;
+		  transform:scale(1.7);
+		  -ms-transform:scale(1.7);
+		  -webkit-transform:scale(1.7);
+		  -o-transform:scale(1.7);
+		  -moz-transform:scale(1.7);
+		  transform-origin:0 0;
+		  -ms-transform-origin:0 0;
+		  -webkit-transform-origin:0 0;
+		  -o-transform-origin:0 0;
+		  -moz-transform-origin:0 0;
+		  -webkit-transform-origin:0 0;
+		}
+
+		#lbBump {
+			position: relative;
+			top: 3pt;
+			left: 5pt;
+			font-size: 120%;
+		}
+
+		#chart {
+			width: 100%;
+		}
+
+
+		#chart .line {
+			/*stroke: #4A90E2;*/
+			stroke: none;
+			stroke-width: 3px;
+			stroke-opacity: 0.30;
+			fill: none;
+		}
+
+		.box text {
+			opacity: 0;
+		}
+
+		.box:hover text {
+			opacity: 1;
+		}
+/*.mainArea image {
+  opacity: 0;
+}
+*/
+/*.mainArea image:hover {
+  opacity: 1;
+}
+*/
+/* For hovering */
+.mainArea.selected .line.selected {
+	opacity: 0.9;
+}
+.mainArea.selected .line {
+	opacity: 0.1;
+}
+
+.mainArea.selected .box {
+	opacity: 0.1;
+}
+
+.mainArea.selected .box.selected{
+	opacity: 0.9;
+}
+/* End hovering */
+
+.box rect {
+	fill-opacity: 0.85;
+}
+
+#chart .box text {
+	pointer-events: none;
+	font-size: 8pt;
+}
+
+
+#chart .axis path,
+.axis line {
+	fill: none;
+	/*stroke: #ccc;*/
+	shape-rendering: crispEdges;
+}
+
+#chart .y.axis line {
+	/*stroke: white;*/
+}
+
+/*#chart text {
+	font-size: 12pt;
+}
+*/
+#slRound {
+	width: 100%;
+/*	position: relative;
+top:-30px;*/
+}
+
+/*.classified-range .legend {
+	fill: white;
+}
+*/
+
+</style>
+</head>
+<body>
+
+	<h1>Tabla de Posiciones Torneo Apertura 2017 Colombia</h1>
+		<a class="twitter-share-button"
+	  href="https://twitter.com/intent/tweet?text=Evolución de la tabla de clasificaciones @dimayor Torneo apertura 2017. Por @duto_guerra">
+	Tweet</a>
+	<p>Observe la evolución de las tablas de posiciones de la Dimayor en el torneo apertura 2017.</p>
+	<input id="chBump" type="checkbox" checked="true" ><label id="lbBump" for="chBump"> Ver por puestos</label>
+	<br><br>
+
+	<div id="chart"></div>
+
+	<p>Filtre por la ronda: </p>
+	<input id="slRound" type="range" />
+
+
+	<p>Desarrollado por <a href="http://johnguerra.co">John Alexis Guerra Gómez</a>.<br>Basado en los <a href="https://es.wikipedia.org/wiki/Torneo_Apertura_2017_(Colombia)">página de Wikipedia del Torneo Apertura </a>.<br>Puede bajar los datos procesados con todos <a href="./torneoAperturaColombia2017.json">los resultados de los partidos de la Dimayor del torneo apertura 2017 en formato JSON aquí</a>, y <a href="https://github.com/john-guerra/eliminatoriaConmebolRusia2018">acá puede encontrar el repositorio de Github con el código fuente</a></p>
+	<a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a><br />Este trabajo está publicado bajo la licencia <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+	<h4>Créditos</h4>
+	<ul>
+		<li>Escudo Nacional De Mateo Pineda Osorio (<a href="//commons.wikimedia.org/w/index.php?title=User:Wikialien&amp;action=edit&amp;redlink=1" class="new" title="User:Wikialien (page does not exist)">Wikialien</a>) - <span class="int-own-work" lang="es">Trabajo propio</span>, <a href="http://creativecommons.org/licenses/by-sa/4.0" title="Creative Commons Attribution-Share Alike 4.0">CC BY-SA 4.0</a>, <a href="https://commons.wikimedia.org/w/index.php?curid=46479325">Enlace</a></li>
+		<li>Escudo Millonarios De <a href="//commons.wikimedia.org/w/index.php?title=User:Sendtel_%2B&amp;action=edit&amp;redlink=1" class="new" title="User:Sendtel + (page does not exist)">Sendtel +</a> - <span class="int-own-work" lang="es">Trabajo propio</span>, <a href="http://creativecommons.org/licenses/by/4.0" title="Creative Commons Attribution 4.0">CC BY 4.0</a>, <a href="https://commons.wikimedia.org/w/index.php?curid=54170859">Enlace</a>
+		</li>
+		<li>Escudo Santa Fé De <a href="//commons.wikimedia.org/w/index.php?title=User:Jagarcialozano&amp;action=edit&amp;redlink=1" class="new" title="User:Jagarcialozano (page does not exist)">Jagarcialozano</a> - <span class="int-own-work" lang="es">Trabajo propio</span>, <a href="http://creativecommons.org/licenses/by-sa/3.0" title="Creative Commons Attribution-Share Alike 3.0">CC BY-SA 3.0</a>, <a href="https://commons.wikimedia.org/w/index.php?curid=29284533">Enlace</a>
+		</li>
+		<li>Escudo América de Cali By americadecali.co, Fair use, <a href="https://en.wikipedia.org/w/index.php?curid=44290397">Link</a></li>
+		<li>Escudo Cali De Deportivo Cali - <span class="int-own-work" lang="es">Trabajo propio</span>, Dominio público, <a href="https://commons.wikimedia.org/w/index.php?curid=46479403">Enlace</a></li>
+		<li>Escudo Junior De <a href="https://en.wikipedia.org/wiki/Atl%C3%A9tico_Junior" class="extiw" title="en:Atlético Junior">Atlético Junior</a> - <span class="int-own-work" lang="es" xml:lang="es">Trabajo propio</span>, Dominio público, <a href="https://commons.wikimedia.org/w/index.php?curid=17020288">Enlace</a></li>
+		<li>
+			Escudo Medellín De <a href="https://en.wikipedia.org/wiki/Independiente_Medell%C3%ADn" class="extiw" title="en:Independiente Medellín">DIM</a> - <span class="int-own-work" lang="es">Trabajo propio</span><a href="//commons.wikimedia.org/wiki/File:Inkscape_Logo.svg" title="File:Inkscape Logo.svg"></a>Este <a href="https://es.wikipedia.org/wiki/gr%C3%A1fico_vectorial" class="extiw" title="es:gráfico vectorial">gráfico vectorial</a> fue creado con <a href="//commons.wikimedia.org/wiki/Help:Inkscape" title="Help:Inkscape">Inkscape</a>, Dominio público, <a href="https://commons.wikimedia.org/w/index.php?curid=47449424">Enlace</a>
+		</li>
+		<li>Escudo Once Caldas De <a href="//commons.wikimedia.org/w/index.php?title=User:Camilo4rincon&amp;action=edit&amp;redlink=1" class="new" title="User:Camilo4rincon (page does not exist)">Camilo4rincon</a> - <span class="int-own-work" lang="es">Trabajo propio</span>, <a href="http://creativecommons.org/licenses/by-sa/4.0" title="Creative Commons Attribution-Share Alike 4.0">CC BY-SA 4.0</a>, <a href="https://commons.wikimedia.org/w/index.php?curid=51432360">Enlace</a></li>
+		<li>Escudo Tolima De <a href="//commons.wikimedia.org/w/index.php?title=User:Pg_Loc1234567890&amp;action=edit&amp;redlink=1" class="new" title="User:Pg Loc1234567890 (page does not exist)">Pg Loc1234567890</a> - <span class="int-own-work" lang="es">Trabajo propio</span>, Dominio público, <a href="https://commons.wikimedia.org/w/index.php?curid=16289746">Enlace</a></li>
+		<li>
+			Escudo Pasto De <a href="//commons.wikimedia.org/w/index.php?title=User:Deportivo_Pasto&amp;action=edit&amp;redlink=1" class="new" title="User:Deportivo Pasto (page does not exist)">Deportivo Pasto</a> - <span class="int-own-work" lang="es">Trabajo propio</span>, <a href="http://creativecommons.org/licenses/by-sa/4.0" title="Creative Commons Attribution-Share Alike 4.0">CC BY-SA 4.0</a>, <a href="https://commons.wikimedia.org/w/index.php?curid=49464313">Enlace</a>
+		</li>
+		<li>
+			Escudo Boyacá Chicó tomado de <a href="http://www.escudosdefutbolyequipaciones.com/ESCUDO+BOYACA%20CHICO%20F.C.">http://www.escudosdefutbolyequipaciones.com/ESCUDO+BOYACA%20CHICO%20F.C.</a>
+		</li>
+		<li>
+			Esudo La Equidad tomado de <a href="http://colombia.as.com/resultados/ficha/equipo/la_equidad/3849/">http://colombia.as.com/resultados/ficha/equipo/la_equidad/3849/</a>
+		</li>
+		<li>Escudo Bucaramanga By Source, <a href="//en.wikipedia.org/wiki/File:Atl%C3%A9tico_Bucaramanga_logo.png" title="Fair use of copyrighted material in the context of Atlético Bucaramanga">Fair use</a>, <a href="https://en.wikipedia.org/w/index.php?curid=44290384">Link</a></li>
+		<li>Escudo Envigado By <a href="https://en.wikipedia.org/wiki/Envigado_F%C3%BAtbol_Club" class="extiw" title="en:Envigado Fútbol Club">Envigado Fútbol Club</a> - <span class="int-own-work" lang="en">Own work</span>, Public Domain, <a href="https://commons.wikimedia.org/w/index.php?curid=30397634">Link</a></li>
+		<li>Escudo Cortuluá By dimayor.com.co, <a href="//en.wikipedia.org/wiki/File:Cortulua.png" title="Fair use">Fair use</a>, <a href="https://en.wikipedia.org/w/index.php?curid=44290400">Link</a></li>
+		<li>Escudo Águilas By Source, <a href="//en.wikipedia.org/wiki/File:LogoAguilasPereira.png" title="Fair use of copyrighted material in the context of Águilas Doradas">Fair use</a>, <a href="https://en.wikipedia.org/w/index.php?curid=43971584">Link</a></li>
+		<li>Escudo Alianza Petrolera De <a rel="nofollow" class="external free" href="http://www.ligapostobon.com.co/equipos/alianza_petrolera">http://www.ligapostobon.com.co/equipos/alianza_petrolera</a>, Dominio público, <a href="https://commons.wikimedia.org/w/index.php?curid=44903010">Enlace</a></li>
+		<li>Escudo Jaguares By <span title="must have been published or publicly displayed outside Wikipedia">Source</span> (<a href="//en.wikipedia.org/wiki/Wikipedia:Non-free_content_criteria#4" title="Wikipedia:Non-free content criteria">WP:NFCC#4</a>), <a href="//en.wikipedia.org/wiki/File:Jaguares_de_Cordoba.png" title="Fair use of copyrighted material in the context of Jaguares de Córdoba">Fair use</a>, <a href="https://en.wikipedia.org/w/index.php?curid=39752606">Link</a></li>
+		<li>Escudo Patriotas De <a href="//pt.wikipedia.org/wiki/Ficheiro:PatriotasFC.png" title="Conteúdo restrito">Conteúdo restrito</a>, <a href="https://pt.wikipedia.org/w/index.php?curid=5344563">Ligação</a></li>
+		<li>Escudo Tigres De <a href="//commons.wikimedia.org/wiki/User:ElBrayaneducado" title="User:ElBrayaneducado">ElBrayaneducado</a> - <span class="int-own-work" lang="es">Trabajo propio</span>, <a href="http://creativecommons.org/licenses/by-sa/4.0" title="Creative Commons Attribution-Share Alike 4.0">CC BY-SA 4.0</a>, <a href="https://commons.wikimedia.org/w/index.php?curid=56217159">Enlace</a></li>
+
+	</ul>
+
+
+
+
+	<script src="./d3.v3.min.js"></script>
+	<script src="./bumpChartPhotos.js"></script>
+	<script src="./mainTorneoColombia2017.js"></script>
+	<!-- GOOGLE ANALYTICS -->
+	<script>
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+		ga('create', 'UA-72531610-1', 'auto');
+		ga('send', 'pageview');
+
+	</script>
+	<script>window.twttr = (function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0],
+    t = window.twttr || {};
+  if (d.getElementById(id)) return t;
+  js = d.createElement(s);
+  js.id = id;
+  js.src = "https://platform.twitter.com/widgets.js";
+  fjs.parentNode.insertBefore(js, fjs);
+
+  t._e = [];
+  t.ready = function(f) {
+    t._e.push(f);
+  };
+
+  return t;
+}(document, "script", "twitter-wjs"));</script>
+</body>
+</html>
