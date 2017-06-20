@@ -6,7 +6,7 @@
 
 var margin = {top: 10, right: 10, bottom: 10, left: 10},
   width = 960 - margin.left - margin.right,
-  height = 500 - margin.top - margin.bottom;
+  height = 600 - margin.top - margin.bottom;
 
 // var svg = d3.select("body").append("svg")
 //   .attr("width", width + margin.left + margin.right)
@@ -27,7 +27,7 @@ var ids = {
   "Atlético Bucaramanga" : "Bucaramanga",
   "La Equidad" : "Equidad",
   "Junior" : "Junior",
-  "Envigado F. C." : "Envigado",
+  "Envigado F C" : "Envigado",
   "Deportivo Cali" : "Cali",
   "Atlético Huila" : "Huila",
   "Patriotas" : "Patriotas",
@@ -50,6 +50,8 @@ function computeRanking(data) {
   var dGoalsLocal = {};
   data.sort(function (a,b) { return d3.ascending(a.round, b.round); })
     .forEach(function (d) {
+      // if (isNaN(+d.score[0]) || isNaN(+d.score[1])) return
+
       if (!(d.teams[0] in dPoints)) { dPoints[d.teams[0]] = 0; }
       if (!(d.teams[1] in dPoints)) { dPoints[d.teams[1]] = 0; }
       if (!(d.teams[0] in dGoals)) { dGoals[d.teams[0]] = 0; }
@@ -204,7 +206,7 @@ function redraw() {
       .y(function (d) { return isBump? d.ranking: d.points; })
       // .y(function (d) { return d.points; })
       .isBumpChart(isBump)
-      .topN(15)
+      .topN(20)
       .useClipPath(false)
 
       .xScale(d3.scale.linear())
@@ -240,6 +242,11 @@ d3.json("torneoAperturaColombia2017.json", function(error, data) {
   data.forEach(function (d) {
     d.round = +d.round;
     d.names = d.teams;
+
+
+    if (ids[d.teams[0]] === undefined || ids[d.teams[1]] === undefined) {
+      console.log(d.teams);
+    }
     d.teams = [ids[d.teams[0]],ids[d.teams[1]]];
   });
   ranking = computeRanking(data);

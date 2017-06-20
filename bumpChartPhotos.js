@@ -159,7 +159,7 @@ function bumpChartPhotos() {
 
                 }
 
-                nextDemo = setTimeout(runDemo, 2500);
+                nextDemo = setTimeout(runDemo, 3000);
             }
 
         });

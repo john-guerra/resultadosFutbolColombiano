@@ -7,16 +7,18 @@ var url = "https://es.wikipedia.org/wiki/Torneo_Apertura_2017_(Colombia)#Resulta
 
 scraperjs.StaticScraper.create(url)
   .scrape(function($) {
-    return $("#mw-content-text > center:nth-child(n+32):nth-child(-n+51)").map(function() {
+    // console.log($("#mw-content-text center:nth-child(n+32):nth-child(-n+51)").text());
+    return $("#mw-content-text center:nth-child(n+32):nth-child(-n+51)").map(function() {
       var games = [];
       var round = $(this).find("table tr:nth-child(1)").text().trim().split(" ")[1];
       // var prevDate = null;
 
+      var regEx = new RegExp("\\.", "g");
       $(this).find("table tr:nth-child(n+3)").each(function () {
         var game = {};
         game.teams = [
-          $(this).find("td:nth-child(1)").text().replace(".", ""),
-          $(this).find("td:nth-child(3)").text().replace(".", "")
+          $(this).find("td:nth-child(1)").text().replace(regEx, ""),
+          $(this).find("td:nth-child(3)").text().replace(regEx, "")
         ];
         game.score =$(this).find("td:nth-child(2)").text().split(":");
         game.round = round;
